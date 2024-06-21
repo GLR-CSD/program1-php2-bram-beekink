@@ -154,7 +154,7 @@ class album {
     public function save(PDO $db): void
     {
         // Voorbereiden van de query
-        $stmt = $db->prepare("INSERT INTO album (Naam, Artiesten, Release_datum, URL, Afbeelding,Prijs) VALUES (:Naam, :Artiesten, :telefoonnummer, :Release_datum, :Afbeelding,:prijs)");
+        $stmt = $db->prepare("INSERT INTO album (Naam, Artiesten, Release_datum, URL, Afbeelding, Prijs) VALUES (:Naam, :Artiesten, :Release_datum, :URL, :Afbeelding, :Prijs)");
         $stmt->bindParam(':Naam', $this->Naam);
         $stmt->bindParam(':Artiesten', $this->Artiesten);
         $stmt->bindParam(':Release_datum', $this->Release_datum);
@@ -163,6 +163,7 @@ class album {
         $stmt->bindParam(':Prijs', $this->Prijs);
         $stmt->execute();
     }
+
 
     // Methode om een bestaande persoon bij te werken op basis van ID
     public function update(PDO $db): void
@@ -243,4 +244,6 @@ class album {
     {
         $this->Afbeelding = $Afbeelding;
     }
+
+
 }
